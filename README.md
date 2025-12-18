@@ -1,195 +1,157 @@
-# 📂 SMS Spam Detection — Practical Coding Worksheet (Python + Machine Learning)
+# 📘 Hands-On Worksheet — SMS Spam Detection (Beginner Friendly)
 
-This repository contains a hands-on practical assignment focused on building and evaluating an SMS Spam Detection System using Python and Machine Learning. The worksheet guides you through dataset exploration, preprocessing, feature engineering, model training, and evaluation — along with optional advanced extensions.
-
----
-
-## 📌 Section B — Practical Coding Tasks (Core ML Workflow)
-
-### ✅ 1️⃣ Dataset Import, Cleaning & Exploration
-**Objectives:**
-- Load the `spam.csv` dataset
-- Understand dataset structure and distribution
-
-**Tasks:**
-- Import the dataset using `pandas`
-- Display dataset statistics (row count, column count, null values)
-- Preview first 5–10 rows
-- Identify dataset columns (`text`, `label`, etc.)
-- Visualize class distribution using:
-  - Bar chart or Pie chart (`matplotlib` / `seaborn`)
-- Document observations (e.g., dataset imbalance)
-
-**Expected Skills:**
-- pandas
-- matplotlib / seaborn
+## 🎯 Project Goal
+Build a machine learning model that can classify text messages as **Spam** or **Ham (Not Spam)**.
 
 ---
 
-### ✍️ 2️⃣ Text Preprocessing Pipeline
+## 🧪 Section A — Dataset Handling & Exploration
 
-**Build a reusable function to:**
-- Convert text to lowercase
-- Remove punctuation & special characters
-- Remove stopwords
-- Perform stemming or lemmatization
-- Optional: remove numbers, URLs, emojis
+### ✅ Task 1 — Import the Dataset
+- Load the dataset `spam.csv` using pandas.  
+- Display the first 10 rows.
 
-**Test Input Example:**
-"Congratulations!!! You won $1000 CASH. Claim now!!!"
+**Expected Code Concepts:**  
+`pandas.read_csv`, `head()`
 
-**Deliverables:**
-- Original message
-- Intermediate transformations
-- Final cleaned output
-- Observations on preprocessing effectiveness
-
-**Expected Skills:**
-- NLTK / spaCy
-- regex
+**✏️ Write your observation:**
+- How many columns are present?
+- What are the labels?
 
 ---
 
-### 🔠 3️⃣ Text Vectorization
+### ✅ Task 2 — Clean the Data
+Perform the following:
+- Remove unwanted columns (if any)
+- Rename columns to:
+  - `label`
+  - `message`
 
-**Tasks:**
-- Apply TF-IDF Vectorizer
-- Compare with Bag-of-Words
-- Report & analyze:
-  - vocabulary size
-  - dimensionality of features
-  - sample feature weights
-  - differences in token importance
+**Expected Concepts:**  
+`drop()`, `rename()`
 
-**Expected Skills:**
-- sklearn.feature_extraction
+**✏️ Write your observation:**
+- What shape did the dataset have before and after cleaning?
 
 ---
 
-### 🤖 4️⃣ Model Training & Evaluation
+### ✅ Task 3 — Understand Label Distribution
+- Count how many spam and ham messages exist.  
+- Create a bar chart or pie chart showing the distribution.
 
-**Train at least two models:**
+**Expected Concepts:**  
+`value_counts()`, `matplotlib`
+
+**✏️ Write your observation:**
+- Is the dataset balanced or imbalanced?
+- Which label is more common?
+
+---
+
+## 🧪 Section B — Text Preprocessing
+
+### 🔍 Task 4 — Preprocess Messages
+Apply:
+- lowercase
+- remove punctuation
+- remove stopwords
+
+**Expected Concepts:**  
+`string`, `re`, `nltk`
+
+**✏️ Write your observation:**
+- Why is text cleaning important?
+
+---
+
+### 🔍 Task 5 — Convert Text to Numerical Data
+- Use Bag-of-Words (`CountVectorizer`) or TF-IDF.
+
+**Expected Concepts:**  
+`sklearn.feature_extraction.text`
+
+**✏️ Write your observation:**
+- What does vectorization mean?
+
+---
+
+## 🤖 Section C — Model Building
+
+### 🤖 Task 6 — Train a Machine Learning Model
+Use any one:
 - Naive Bayes
 - Logistic Regression
-- SVM
-- (Optional) Random Forest, XGBoost
 
-**Performance Metrics to Report:**
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- Confusion Matrix
-- Classification Report
+**Expected Concepts:**  
+`train_test_split`, `fit()`
 
-**Discussion Points:**
-- Best performing model and justification
-- Impact of feature engineering
-- Insights from confusion matrix:
-  - false positives
-  - false negatives
-
-**Expected Skills:**
-- train/test split
-- sklearn.metrics
+**✏️ Observation Questions:**
+- What accuracy did your model achieve?
+- Training vs Testing accuracy?
 
 ---
 
-### 🧍 5️⃣ Custom User Input Prediction
+### 🤖 Task 7 — Evaluate the Model
+Calculate:
+- accuracy score
+- confusion matrix
+- classification report
 
-**Implement CLI or Notebook input handling:**
-- Accept SMS text from user
-- Preprocess using your pipeline
-- Vectorize
-- Predict as SPAM or HAM
-- Return:
-  - label
-  - probability / confidence score
+**Expected Concepts:**  
+`sklearn.metrics`
 
-**Examples to test:**
-- promotional offers
-- scam-like messages
-- informal/personal chats
-
-**Outcome:**
-A fully functional text classifier for new/unseen SMS.
+**✏️ Write your observation:**
+- Which type of error is more common?
+  - false positive?
+  - false negative?
 
 ---
 
-## ⭐ Section C — Extension / Advanced Tasks (Optional but Recommended)
+## 🧠 Section D — Prediction & Real-Life Testing
 
-Choose any ONE (or more):
+### ✍️ Task 8 — Test the Model
+Use sample messages and predict:
+- `"You won ₹10,000 click here"`
+- `"Hey what's up?"`
 
-### 🔹 Replace TF-IDF with Word Embeddings
-- Word2Vec / GloVe
-- Analyze differences in performance
+**Expected Concepts:**  
+`model.predict()`
 
-### 🔹 Deep Learning Model
-- LSTM / RNN
-- Evaluate using embeddings
-
-### 🔹 Backend API
-- Flask or FastAPI
-- Endpoint: `/predict`
-- Accept raw text → return prediction
-
-### 🔹 UI / Web App
-- Streamlit
-- Simple & interactive SMS classifier
+**✏️ Write your observation:**
+- Did the model classify correctly?
 
 ---
 
-## 📊 Section D — Output, Results & Interpretation
+## 🚀 Bonus Challenges (Optional)
 
-**Write a short report summarizing:**
-- Best model (based on F1-score)
-- Reasoning behind its performance
-- Key features/keywords contributing to spam detection
-- Present:
-  - at least one confusion matrix
-  - FP & FN interpretation
-
-**Custom testing:**
-- Evaluate at least 5 custom SMS examples
-- Label and justify predictions
-
-**Expected Output:**
-- Demonstrated understanding of:
-  - evaluation metrics
-  - imbalanced dataset considerations
-  - model trade-offs
+✔ Try a different model (SVM or Random Forest)  
+✔ Try Lemmatization  
+✔ Build a small GUI using Streamlit  
+✔ Test with real SMS from your phone  
 
 ---
 
-## 🧠 Expected Learning Outcomes
+## 📌 Submission Checklist
 
-By completing this worksheet, you will:
-
-- Understand NLP preprocessing for text classification
-- Build vectorizers & ML models
-- Perform model evaluation using real-world metrics
-- Deploy a functional predictive pipeline
-- Gain exposure to advanced ML & deployment tools
-
----
-
-## 🛠 Recommended Tools & Libraries
-
-- Python 3.x
-- pandas
-- numpy
-- sklearn
-- nltk / spaCy
-- matplotlib / seaborn
-- streamlit / flask / fastapi (optional)
-- gensim (for embeddings)
+Students must submit:
+- Notebook (.ipynb)
+- Screenshots of:
+  - dataset exploration
+  - label distribution
+  - model evaluation
+- Responses to observation questions
 
 ---
 
-## 📁 Suggested Folder Structure
+## ✅ Expected Learning Outcomes
 
+By completing this worksheet, students will learn:
+✔ dataset loading & cleaning  
+✔ preprocessing text  
+✔ converting text to numbers  
+✔ training ML models  
+✔ understanding evaluation metrics  
+✔ testing real messages  
 
-
-
-
+---
 
